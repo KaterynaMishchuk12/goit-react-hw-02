@@ -2,7 +2,7 @@ import css from "./Options.module.css";
 
 export const Options = ({ rates, setRates }) => {
   const { good, neutral, bad } = rates;
-  //   const totalRates = good + neutral + bad;
+  const totalRates = good + neutral + bad;
 
   const updateGood = () => {
     setRates({
@@ -33,9 +33,8 @@ export const Options = ({ rates, setRates }) => {
       bad: 0,
     });
   };
-
-  return (
-    <div>
+  if (totalRates === 0) {
+    return (
       <ul className={css.list}>
         <li key="Good">
           <button className={css.button} onClick={updateGood}>
@@ -52,12 +51,33 @@ export const Options = ({ rates, setRates }) => {
             Bad
           </button>
         </li>
-        <li key="Reset">
-          <button className={css.button} onClick={resetRates}>
-            Reset
-          </button>
-        </li>
       </ul>
-    </div>
-  );
+    );
+  } else
+    return (
+      <div>
+        <ul className={css.list}>
+          <li key="Good">
+            <button className={css.button} onClick={updateGood}>
+              Good
+            </button>
+          </li>
+          <li key="Neutral">
+            <button className={css.button} onClick={updateNeutral}>
+              Neutral
+            </button>
+          </li>
+          <li key="Bad">
+            <button className={css.button} onClick={updateBad}>
+              Bad
+            </button>
+          </li>
+          <li key="Reset">
+            <button className={css.button} onClick={resetRates}>
+              Reset
+            </button>
+          </li>
+        </ul>
+      </div>
+    );
 };

@@ -5,22 +5,17 @@ import { Feedback } from "./Feedback/Feedback";
 import "./App.css";
 
 export function App() {
-  const [rates, setRates] = useState({
+  const savedRates = JSON.parse(localStorage.getItem("saved-rates")) || {
     good: 0,
     neutral: 0,
     bad: 0,
-  });
-  //   (() => {
-  //   const savedClicks = window.localStorage.getItem("saved-clicks");
-  //   if (savedClicks !== null) {
-  //     return savedClicks;
-  //   }
-  //   return 0;
-  // });
+  };
 
-  // useEffect(() => {
-  //   window.localStorage.setItem("saved-clicks", clicks);
-  // }, [clicks]);
+  const [rates, setRates] = useState(savedRates);
+
+  useEffect(() => {
+    localStorage.setItem("saved-rates", JSON.stringify(rates));
+  }, [rates]);
 
   return (
     <>

@@ -6,9 +6,9 @@
   padding: 36px;
 }
 .button {
-  background-color: pink;
+  background-color: rgb(239, 139, 234);
   border-radius: 30px;
-  border: 1px solid red;
+  border: 2px solid rgb(50, 16, 47);
   color: black;
   font-size: 32px;
   padding: 8px 32px;
